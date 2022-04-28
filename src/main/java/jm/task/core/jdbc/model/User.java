@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Table
 public class User {
     @Id
@@ -52,11 +53,20 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Byte getAge() {
-        return age;
-    }
+    public Byte getAge() { return age; }
 
     public void setAge(Byte age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
 }
