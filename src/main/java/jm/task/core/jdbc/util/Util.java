@@ -6,15 +6,18 @@ import java.sql.DriverManager;
 
 
 public class Util {
-    private String sqlUrl = "jdbc:mysql://localhost:3306/kataschema";
-    private String sqlUser = "root";
-    private String sqlPassword = "12345zZ!";
+    private static final String URL = "jdbc:mysql://localhost:3306/kataschema";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "12345zZ!";
 
-    {
-        try (Connection connection = DriverManager.getConnection(sqlUrl, sqlUser, sqlPassword)) {
-            System.out.println("Соединение с MySQL успешно");
+    public static Connection getConnection() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
+        return connection;
     }
 }
